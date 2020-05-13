@@ -36,7 +36,7 @@ class Spider:
             if rowLength == 0 or rowLength < j + lineLength:
                 return 0, rowLength if firstMatchedLineJ is None else firstMatchedLineJ 
 
-            if self.landscape[i][j:j + lineLength] != line:    
+            if self.__compare_line(self.landscape[i][j:j + lineLength], line) == False:    
                 return 0, j
 
             if firstMatchedLineJ is None:
@@ -44,3 +44,13 @@ class Spider:
             i += 1
 
         return 1, j + maxLength 
+
+    def __compare_line(self, landscapeLine, bugLine):
+        for i in range(len(bugLine)):
+            if ord(bugLine[i]) in [32, 9]: 
+                continue
+
+            if landscapeLine[i] != bugLine[i]:
+                return False
+
+        return True
