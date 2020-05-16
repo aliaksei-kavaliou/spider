@@ -1,5 +1,3 @@
-#!/usr/bin/python
-
 class Spider:
     def __init__(self, landscape, bug):
         self.landscape = landscape
